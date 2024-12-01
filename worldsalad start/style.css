@@ -1,0 +1,91 @@
+/* Custom styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    padding-top: 50px;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+#wordInput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#inputWord {
+    display: inline-block;
+    width: 250px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    transition: transform 0.3s ease;
+}
+
+#submitWord {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#submitWord:hover {
+    background-color: #0056b3;
+}
+
+#submitWord:active {
+    transform: scale(0.95);
+}
+
+#inputWord:focus {
+    border-color: #007bff;
+    transform: scale(1.05);
+}
+
+#storyContainer {
+    margin-top: 30px;
+    background-color: #f0f8ff;
+    border: 2px solid #b0c4de;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#inputContainer {
+    transition: opacity 0.5s ease;
+}
+
+#submitButtonContainer {
+    display: flex;
+    justify-content: center;
+}
+
+/* Make the page mobile-responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    #inputWord {
+        width: 200px;
+    }
+
+    #submitWord {
+        font-size: 1rem;
+    }
+}
