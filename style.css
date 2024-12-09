@@ -1,91 +1,71 @@
-/* Custom styles */
+/* General body styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
-    padding-top: 50px;
-}
-
-.container {
-    padding: 20px;
-}
-
-h1 {
-    font-size: 2.5rem;
-    color: #333;
-}
-
-#wordInput {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* Greeting Section */
+#greeting {
+    margin-bottom: 20px;
+}
+
+/* Input Section */
+#inputSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#inputLabel {
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
 #inputWord {
-    display: inline-block;
-    width: 250px;
-    margin-top: 20px;
-    font-size: 1.2rem;
-    padding: 10px;
-    border-radius: 5px;
-    border: 2px solid #ddd;
-    transition: transform 0.3s ease;
+    width: 200px;
+    padding: 8px;
+    margin-bottom: 10px;
+    font-size: 16px;
 }
 
 #submitWord {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    background-color: #007bff;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #5cb85c;
     color: white;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: background-color 0.3s;
 }
 
 #submitWord:hover {
-    background-color: #0056b3;
+    background-color: #4cae4c;
 }
 
-#submitWord:active {
-    transform: scale(0.95);
-}
-
-#inputWord:focus {
-    border-color: #007bff;
-    transform: scale(1.05);
-}
-
+/* Story Container */
 #storyContainer {
-    margin-top: 30px;
-    background-color: #f0f8ff;
-    border: 2px solid #b0c4de;
+    margin-top: 20px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
 }
 
-#inputContainer {
-    transition: opacity 0.5s ease;
-}
-
-#submitButtonContainer {
-    display: flex;
-    justify-content: center;
-}
-
-/* Make the page mobile-responsive */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
-    }
-
-    #inputWord {
-        width: 200px;
-    }
-
-    #submitWord {
-        font-size: 1rem;
-    }
+/* Story Text */
+#pizzaStory {
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: bold;
 }
