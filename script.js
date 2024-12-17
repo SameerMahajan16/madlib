@@ -1,60 +1,86 @@
-//GET user Name
-let userName = prompt("what is your name?")
+// Array to store the user inputs for the Mad Lib
+const wordPrompts = [
+    { prompt: "Enter a noun (type of food):", key: "noun1" },
+    { prompt: "Enter a verb (action):", key: "verb1" },
+    { prompt: "Enter an adjective (describing word):", key: "adjective1" },
+    { prompt: "Enter a noun (person):", key: "noun2" },
+    { prompt: "Enter a verb (action):", key: "verb2" }
+];
 
+// Store the inputs
+let userInputs = {};
 
-//Get user Name to Website
-userName
-  ? (greeting.innerText=`Hello, ${userName}!`)
-  : (greeting. innerText='Hello Stranger')
+// Track the current word prompt
+let currentWordIndex = 0;
 
-let responseImg = document.getElementById('response-img')
-let responseText = document.getElementById('response-text')
-let greeting = document.getElementById('greeting')
+// Function to display the next prompt
+function showNextPrompt() {
+    // Clear previous input field and label
+    document.getElementById("inputWord").value = '';
+    
+    // Check if we have more prompts to display
+    if (currentWordIndex < wordPrompts.length) {
+        let currentPrompt = wordPrompts[currentWordIndex];
 
-function shakeMagic8Ball () {
-    //Get User Question
-let userQuestion = prompt('What do you want to ask the 8 Ball?')
-
-
-//DO NOT TOUCH THIS CODE!
-let randomNumber = Math.floor(Math.random() * 8);
-
-
-let eightBall = '';
-let imageChoice =''
-
-switch (randomNumber) {
-    case 0:
-        eightBall = 'It is certain.'
-
-        break;
-    case 1:
-        eightBall = 'It is decidely so.';
-        break;
-    case 2:
-        eightBall = 'Reply hazy try again.';
-        break;
-    case 3:
-        eightBall = 'Cannot predict now.';
-        break;
-    case 4:
-        eightBall = 'Do not count on it.';
-        break;
-    case 5:
-        eightBall = 'My sources say no.';
-        break;
-    case 6:
-        eightBall = 'Outlook not so good.';
-        break;
-    case 7:
-        eightBall = 'Signs point to yes.';
-        break;
+        // Change the prompt text to the next question
+        document.getElementById("inputLabel").textContent = currentPrompt.prompt;
+        
+        // Show the input field for the user to type in
+        document.getElementById("inputWord").style.display = 'inline-block';
+        document.getElementById("submitWord").style.display = 'inline-block';
+    } else {
+        // If all words are filled in, show the completed story
+        displayStory();
+    }
 }
 
+// Function to handle the word submission
+function submitWord() {
+    // Get the current word input value
+    let userWord = document.getElementById("inputWord").value.trim();
 
-console.log(`The Magic 8 Ball says ${eightBall}`)
+    // Save the word to the userInputs object
+    if (userWord !== '') {
+        let currentPrompt = wordPrompts[currentWordIndex];
+        userInputs[currentPrompt.key] = userWord;
 
-responseText.innerText
-document.getElementById('response-text').innerText = `${userName} has asked ${userQuestion} to the almighty 8 Ball. The 8 Ball has replied ${eightBall}!`
+        // Hide the input field and button to simulate "pop out"
+        document.getElementById("inputWord").style.display = 'none';
+        document.getElementById("submitWord").style.display = 'none';
+
+        // Move to the next word prompt
+        currentWordIndex++;
+
+        // Show the next prompt after a short delay
+        setTimeout(showNextPrompt, 1000);
+    }
 }
-responseImg.scr
+
+// Function to display the generated story
+function displayStory() {
+    // Create the story using the user inputs
+    const pizzaStory = `
+        One day, a famous pizza chef decided to make the best pizza ever. They grabbed a big piece of ${userInputs.noun1}, 
+        and with a sharp knife, began to ${userInputs.verb1} it into tiny pieces. The pizza dough was ${userInputs.adjective1}, 
+        just how they liked it. As the ${userInputs.noun2} watched, they carefully ${userInputs.verb2} the pizza in the oven, 
+        hoping for the perfect result. The pizza turned out to be absolutely delicious! Everyone loved it, and the chef 
+        became famous for their amazing ${userInputs.noun1} pizza!
+    `;
+
+    // Display the story
+    document.getElementById("pizzaStory").innerHTML = pizzaStory;
+    document.getElementById("storyContainer").style.display = 'block';
+}
+
+// Event listener to handle when the "Next" button is clicked
+document.getElementById("submitWord").addEventListener("click", submitWord);
+
+// Start by showing the first prompt
+showNextPrompt();
+
+// Optional: Allow users to press "Enter" to submit the word
+document.getElementById("inputWord").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        submitWord();
+    }
+});
